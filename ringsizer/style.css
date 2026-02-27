@@ -30,6 +30,16 @@ body { font-family: var(--font-ui); background-color: var(--bg-main); color: var
 .logo { font-weight: 800; font-size: 1rem; letter-spacing: 1px; }
 .recalibrate-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; font-weight: 600; font-size: 0.85rem; }
 
+.main-app-title {
+    font-size: 1.4rem; /* Smaller, professional size */
+    font-weight: 900;
+    color: var(--primary-graphite);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 /* ==========================================================================
    FOOTER
    ========================================================================== */
@@ -178,4 +188,95 @@ body { font-family: var(--font-ui); background-color: var(--bg-main); color: var
 .data-table th, .data-table td { border: 1px solid var(--border-ui); padding: 10px; text-align: left; }
 .data-table th { background: var(--bg-main); font-weight: 700; }
 
+/* ==========================================================================
+   FIXED ZOOM LOCK (SCROLLABLE)
+   ========================================================================== */
+
+html, body {
+    /* Prevents the browser from resizing text when rotating the phone */
+    -webkit-text-size-adjust: 100%;
+    /* 'manipulation' allows scrolling and tapping, but disables pinch-zoom */
+    touch-action: manipulation; 
+}
+
+/* Ensure the app container stays scrollable but doesn't zoom */
+.app-container, .tool-panel {
+    touch-action: manipulation;
+}
+
+/* If you have specific sliders, we want to make sure they don't 
+   accidentally trigger a zoom if tapped quickly */
+input[type="range"] {
+    touch-action: none; /* Sliders only move left/right, no need for page gestures here */
+}
+
+/* ==========================================================================
+   FAQ ACCORDION STYLES
+   ========================================================================== */
+.faq-accordion {
+    margin-top: 20px;
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--border-ui);
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-item summary {
+    padding: 18px 0;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--primary-graphite);
+    cursor: pointer;
+    list-style: none; /* Removes default arrow */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Custom arrow using a pseudo-element */
+.faq-item summary::after {
+    content: '+';
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+}
+
+.faq-item details[open] summary::after {
+    content: '−';
+    transform: rotate(180deg);
+}
+
+.faq-content {
+    padding-bottom: 18px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Remove default focus outline for a cleaner look */
+.faq-item summary:focus {
+    outline: none;
+}
+
+.app-intro-text {
+    max-width: 500px;
+    margin: 0 auto 25px; /* Centers it and adds space before the tool */
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* On very small phones, we shrink it a bit more to save space */
+@media (max-width: 480px) {
+    .app-intro-text {
+        font-size: 0.85rem;
+        margin-bottom: 15px;
+    }
+}
 
