@@ -419,6 +419,27 @@ nav a.coming-soon:hover {
 .tool-card.coming-soon:hover .card-cta {
     color: var(--text-main);
 }
+/* ==========================================================================
+   FIXED ZOOM LOCK (SCROLLABLE)
+   ========================================================================== */
+
+html, body {
+    /* Prevents the browser from resizing text when rotating the phone */
+    -webkit-text-size-adjust: 100%;
+    /* 'manipulation' allows scrolling and tapping, but disables pinch-zoom */
+    touch-action: manipulation; 
+}
+
+/* Ensure the app container stays scrollable but doesn't zoom */
+.app-container, .tool-panel {
+    touch-action: manipulation;
+}
+
+/* If you have specific sliders, we want to make sure they don't 
+   accidentally trigger a zoom if tapped quickly */
+input[type="range"] {
+    touch-action: none; /* Sliders only move left/right, no need for page gestures here */
+}
 
 /* ==========================================================================
    CUSTOM MODAL ALERT (UI OVERRIDE)
