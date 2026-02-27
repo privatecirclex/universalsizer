@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Digital Ring Sizer | Precision Screen Caliper Tool</title>
+    <meta name="description" content="Use our precise digital ring sizer to measure your exact ring size or finger circumference directly on your screen. Supports US, UK, EU, and India sizes.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+       <header class="tool-header">
+        <a href="../index.html" class="back-btn">
+            <span class="arrow">&larr;</span> Hub
+        </a>
+        <div class="logo">UNIVERSAL MEASURER</div>
+        <button id="btn-recalibrate" class="recalibrate-btn hidden">⚙️ Recalibrate</button>
+    </header>
+
+
+    <main>
+        <section class="app-interface">
+            <div class="app-container">
+                
+                <div id="step-calibration" class="tool-panel">
+                    <h1 class="panel-title">1. Calibrate Screen</h1>
+                    <p class="panel-instruction">To ensure absolute millimeter precision, place a standard credit card or ID <strong>vertically (portrait)</strong> on your screen. Adjust the slider until the digital box matches the physical width of your card.</p>
+                    
+                    <div class="calibration-zone">
+                                                <div id="card-box" class="target-box vertical-card">
+                            <div class="card-chip"></div>
+                            <div class="card-text">PLACE CARD HERE</div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="precision-slider-container">
+                        <input type="range" id="calibrate-slider" class="precision-slider" min="100" max="600" value="200" aria-label="Calibrate screen scale">
+                    </div>
+                    
+                    <button id="btn-to-verification" class="btn-graphite">Next: Verify Accuracy</button>
+                </div>
+                                <div id="step-verification" class="tool-panel hidden">
+                    <h2 class="panel-title">Verify Accuracy</h2>
+                    <p class="panel-instruction">Grab a physical ruler. Check the line below—it should measure exactly <strong>20 mm (2 cm)</strong> long.</p>
+                    
+                    <div class="calibration-zone" style="margin: 40px 0;">
+                        <div id="verification-line" style="height: 6px; background-color: var(--primary-graphite); border-radius: 3px;"></div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; flex-direction: column;">
+                        <button id="btn-confirm-match" class="btn-graphite">Yes, it matches perfectly</button>
+                        <button id="btn-recalibrate-now" class="btn-outline">No, it's off (Recalibrate)</button>
+                    </div>
+                </div>
+
+
+                <div id="step-measurement" class="tool-panel hidden">
+                    <h2 class="panel-title">2. Digital Caliper</h2>
+                    
+                    <div class="mode-toggles">
+                        <button class="toggle-btn active" data-mode="ring">Measure a Ring</button>
+                        <button class="toggle-btn" data-mode="paper">Measure Finger (Paper)</button>
+                    </div>
+
+                    <div id="mode-ring" class="measure-zone">
+                        <p class="panel-instruction">Place your existing ring flat on the screen. Expand the circle until it perfectly aligns with the <strong>inner edge</strong> of your ring.</p>
+                        <div id="ring-circle" class="target-circle"></div>
+                        <div class="precision-slider-container">
+                            <input type="range" id="ring-slider" class="precision-slider" min="30" max="250" value="100" aria-label="Adjust ring diameter">
+                        </div>
+                    </div>
+
+                    <div id="mode-paper" class="measure-zone hidden">
+                        <p class="panel-instruction">Wrap a strip of paper tightly around your finger, mark the overlap, and hold it to the screen. Match the digital line to your marks.</p>
+                        <div id="paper-line" class="target-line"></div>
+                        <div class="precision-slider-container">
+                            <input type="range" id="paper-slider" class="precision-slider" min="100" max="400" value="150" aria-label="Adjust paper length">
+                        </div>
+                    </div>
+
+                    <div class="digital-readout">
+                        <div class="readout-header">
+                            <span class="readout-label">RAW MEASUREMENT</span>
+                            <span id="raw-measurement" class="readout-value mono-text">0.0 mm</span>
+                        </div>
+                        
+                        <div class="readout-grid">
+                            <div class="readout-item">
+                                <span class="loc-label">US / CAN</span>
+                                <span id="res-us" class="size-value mono-text">--</span>
+                            </div>
+                            <div class="readout-item">
+                                <span class="loc-label">INDIA</span>
+                                <span id="res-in" class="size-value mono-text">--</span>
+                            </div>
+                            <div class="readout-item">
+                                <span class="loc-label">UK / AUS</span>
+                                <span id="res-uk" class="size-value mono-text">--</span>
+                            </div>
+                            <div class="readout-item">
+                                <span class="loc-label">EU / ISO</span>
+                                <span id="res-eu" class="size-value mono-text">--</span>
+                            </div>
+                        </div>
+                        
+                        <button id="share-btn" class="btn-outline">Copy Sizing Data</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seo-content-section">
+            <div class="content-wrapper">
+                
+                <article class="guide-article">
+                    <h2>How to Use This Digital Ring Caliper</h2>
+                    <p>Purchasing jewelry online requires exact measurements. Guessing your ring size can lead to costly resizing fees and ruined surprises. Our web-based digital ring sizer utilizes advanced screen-calibration mathematics to turn your standard smartphone or desktop monitor into a highly precise measuring instrument.</p>
+                    <p>By establishing your screen's unique <em>Pixels-Per-Millimeter (PPM)</em> ratio using a standard credit card, our tool ensures that the digital circles and lines displayed on your screen correspond perfectly to real-world millimeters. No app downloads are required, and all calculations are performed locally on your device for maximum privacy.</p>
+                </article>
+
+                <article class="guide-article">
+                    <h2>Inside Diameter vs. Circumference: Which to Measure?</h2>
+                    <p>When measuring for a ring, the physical geometry you choose to measure is critical. Here is how to decide which mode to use on our caliper:</p>
+                    <ul>
+                        <li><strong>Measuring an Existing Ring (Inside Diameter):</strong> If you already have a ring that fits perfectly, this is the most accurate method. You must measure the <em>inner edges</em> of the ring. Measuring the outside metal includes the thickness of the band, which will result in ordering a size that is far too large.</li>
+                        <li><strong>Measuring a Finger (Circumference):</strong> If you do not have a ring, you must measure the distance around your finger. Wrap a piece of paper snugly around the base of your finger. Be sure to account for your knuckle; if your knuckles are significantly larger than the base of your finger, measure both and choose a size in between so the ring can slide on comfortably.</li>
+                    </ul>
+                </article>
+
+                <article class="guide-article table-article">
+                    <h2>International Ring Size Conversion Chart</h2>
+                    <p>Below is the static millimeter reference data our JavaScript engine uses to calculate your exact size. This covers the most common jewelry standards globally.</p>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Diameter (mm)</th>
+                                    <th>Circumference (mm)</th>
+                                    <th>US / CAN</th>
+                                    <th>INDIA</th>
+                                    <th>UK / AUS</th>
+                                    <th>EU / ISO</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>14.1</td><td>44.2</td><td>3</td><td>4</td><td>F</td><td>44</td></tr>
+                                <tr><td>14.5</td><td>45.5</td><td>3.5</td><td>5</td><td>G</td><td>45</td></tr>
+                                <tr><td>14.9</td><td>46.8</td><td>4</td><td>6</td><td>H</td><td>47</td></tr>
+                                <tr><td>15.3</td><td>48.0</td><td>4.5</td><td>8</td><td>I</td><td>48</td></tr>
+                                <tr><td>15.7</td><td>49.3</td><td>5</td><td>9</td><td>J 1/2</td><td>49</td></tr>
+                                <tr><td>16.1</td><td>50.6</td><td>5.5</td><td>10</td><td>K</td><td>50</td></tr>
+                                <tr><td>16.5</td><td>51.9</td><td>6</td><td>12</td><td>L 1/2</td><td>52</td></tr>
+                                <tr><td>16.9</td><td>53.1</td><td>6.5</td><td>13</td><td>M</td><td>53</td></tr>
+                                <tr><td>17.3</td><td>54.4</td><td>7</td><td>14</td><td>N</td><td>54</td></tr>
+                                <tr><td>17.7</td><td>55.7</td><td>7.5</td><td>15</td><td>O</td><td>56</td></tr>
+                                <tr><td>18.1</td><td>57.0</td><td>8</td><td>17</td><td>P</td><td>57</td></tr>
+                                <tr><td>18.5</td><td>58.3</td><td>8.5</td><td>18</td><td>Q</td><td>58</td></tr>
+                                <tr><td>18.9</td><td>59.5</td><td>9</td><td>19</td><td>R</td><td>59</td></tr>
+                                <tr><td>19.4</td><td>60.8</td><td>9.5</td><td>21</td><td>S</td><td>61</td></tr>
+                                <tr><td>19.8</td><td>62.1</td><td>10</td><td>22</td><td>T 1/2</td><td>62</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+     <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">The Universal Measurer</div>
+            <p>Your free, private, and highly accurate digital measuring toolkit. Stop guessing and start measuring.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <p class="copyright">&copy; 2026 All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
