@@ -5,7 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Digital Ring Sizer | Precision Screen Caliper Tool</title>
     <meta name="description" content="Use our precise digital ring sizer to measure your exact ring size or finger circumference directly on your screen. Supports US, UK, EU, and India sizes.">
+    <link rel="canonical" href="https://universalsizer.vercel.app/ringsizer/">
+
     <link rel="stylesheet" href="style.css">
+      <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Digital Ring Sizer",
+        "url": "https://universalsizer.vercel.app/ringsizer/",
+        "description": "Professional-grade digital/Online ring sizer and conversion tool. Measure diameter and circumference with screen calibration.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How to measure ring size at home?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The most accurate way to measure at home is using a digital screen sizer. Calibrate your screen with a standard card to ensure 1:1 scale, then align an existing ring with the digital circle to find your inside diameter or use a paper strip to measure circumference."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is online ring sizing accurate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, provided the screen is correctly calibrated. Our tool uses a physical reference (like a credit card) to calculate your screen's exact pixels-per-millimeter, ensuring digital measurements match real-world dimensions with high precision."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Inside diameter vs. circumference: which is better?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Inside diameter is generally more accurate if you have a ring that already fits well. Circumference (measuring the finger with paper) is a great alternative but requires a very tight wrap to avoid overestimating the size."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
 </head>
 <body>
 
@@ -18,12 +63,17 @@
     </header>
 
 
-    <main>
-        <section class="app-interface">
-            <div class="app-container">
-                
-                <div id="step-calibration" class="tool-panel">
-                    <h1 class="panel-title">1. Calibrate Screen</h1>
+   <main>
+    <section class="app-interface">
+        <div class="app-container">
+            <h1 class="main-app-title">Online Ring Sizer — Measure in Millimeters</h1>
+            <p class="app-intro-text">
+    Use this free <strong>online ring sizer</strong> to find your exact fit at home. Our calibrated screen tool provides millimeter-accurate measurements for US, UK, EU, and Indian size standards instantly.
+</p>
+
+            <div id="step-calibration" class="tool-panel">
+                <h2 class="panel-title">1. Calibrate Screen</h2>
+
                     <p class="panel-instruction">To ensure absolute millimeter precision, place a standard credit card or ID <strong>vertically (portrait)</strong> on your screen. Adjust the slider until the digital box matches the physical width of your card.</p>
                     
                     <div class="calibration-zone">
@@ -164,6 +214,39 @@
                         </table>
                     </div>
                 </article>
+<article class="guide-article">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-accordion">
+        
+        <div class="faq-item">
+            <details>
+                <summary>How to measure ring size at home?</summary>
+                <div class="faq-content">
+                    <p>The most accurate way to measure at home is using a digital screen sizer. Calibrate your screen with a standard card to ensure 1:1 scale, then align an existing ring with the digital circle to find your inside diameter or use a paper strip to measure circumference.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>Is online ring sizing accurate?</summary>
+                <div class="faq-content">
+                    <p>Yes, provided the screen is correctly calibrated. Our tool uses a physical reference (like a credit card) to calculate your screen's exact pixels-per-millimeter, ensuring digital measurements match real-world dimensions with high precision.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>Inside diameter vs. circumference: which is better?</summary>
+                <div class="faq-content">
+                    <p>Inside diameter is generally more accurate if you have a ring that already fits well. Circumference (measuring the finger with paper) is a great alternative but requires a very tight wrap to avoid overestimating the size.</p>
+                </div>
+            </details>
+        </div>
+
+    </div>
+</article>
 
             </div>
         </section>
@@ -182,5 +265,24 @@
     </footer>
 
     <script src="script.js"></script>
+  <script>
+// Prevent pinch-zoom on iOS Safari
+document.addEventListener('touchstart', function (event) {
+    if (event.touches.length > 1) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+// Prevent double-tap to zoom on iOS Safari
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function (event) {
+    const now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+</script>
+
 </body>
 </html>
