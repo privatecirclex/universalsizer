@@ -1,0 +1,411 @@
+/* ==========================================================================
+   GLOBAL VARIABLES & RESET (PRECISION ENGINEERING THEME)
+   ========================================================================== */
+:root {
+    /* Color Palette - Strict Neutral Graphite & White */
+    --bg-main: #f5f5f5; /* Very light technical gray */
+    --bg-panel: #ffffff; /* Pure white for measurement cards */
+    --text-main: #171717; /* Near black */
+    --text-muted: #737373; /* Neutral gray */
+    
+    /* The core action color is a deep, industrial graphite */
+    --primary-graphite: #262626; 
+    --primary-hover: #000000;
+    
+    /* A subtle emerald green for the "success" or active measuring states */
+    --accent-measure: #10b981; 
+    
+    /* Precision styling */
+    --shadow-ui: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+    --border-ui: #e5e5e5;
+
+    /* Typography */
+    --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Roboto Mono', 'Courier New', monospace; /* For numbers & measurements */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-ui);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* All headings are now geometric sans-serif */
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em; /* Tighter letter spacing for a modern tech feel */
+    margin-bottom: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+/* ==========================================================================
+   HEADER & NAVIGATION
+   ========================================================================== */
+.site-header {
+    background-color: var(--bg-panel);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 5%;
+    border-bottom: 1px solid var(--border-ui);
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-main);
+    text-transform: uppercase; /* Industrial feel */
+}
+
+nav a {
+    margin-left: 32px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+nav a:hover {
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-section {
+    padding: 100px 5% 80px;
+    text-align: center;
+    background-color: var(--bg-main);
+}
+
+.hero-content {
+    max-width: 700px; /* Tighter max width for technical reading */
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    color: var(--text-main);
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono); /* Use code font for the subhead */
+    margin: 20px 0;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+/* BUTTONS - Switched from soft pills to precise rounded rectangles */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 12px 28px;
+    border-radius: 6px; /* Technical, clean radius */
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary-graphite);
+    color: var(--bg-panel);
+    border: 1px solid var(--primary-graphite);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: var(--bg-panel);
+    color: var(--text-main);
+    border: 1px solid var(--border-ui);
+}
+
+.btn-secondary:hover {
+    border-color: var(--text-main);
+}
+
+/* ==========================================================================
+   DIRECTORY GRID (THE TOOLS)
+   ========================================================================== */
+.directory-section {
+    padding: 80px 5%;
+    background-color: var(--bg-panel);
+    border-top: 1px solid var(--border-ui);
+    border-bottom: 1px solid var(--border-ui);
+}
+
+.section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 50px;
+}
+
+.section-header h2 {
+    font-size: 2.25rem;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tool-card {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-ui);
+    border-radius: 8px; /* Sharper corners */
+    padding: 32px 24px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-ui);
+}
+
+.tool-card:hover {
+    border-color: var(--text-muted);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    opacity: 0.9;
+}
+
+.tool-card h3 {
+    font-size: 1.25rem;
+    color: var(--text-main);
+}
+
+.tool-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
+
+.card-cta {
+    color: var(--text-main);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+}
+
+.tool-card:hover .card-cta {
+    color: var(--accent-measure); /* Flashes technical green on hover */
+}
+
+/* ==========================================================================
+   CONTENT SECTIONS & TIMELINE
+   ========================================================================== */
+.tech-explanation-section, .use-cases-section, .faq-section {
+    padding: 80px 5%;
+    background-color: var(--bg-main);
+}
+
+.use-cases-section {
+    background-color: var(--bg-panel);
+    border-top: 1px solid var(--border-ui);
+    border-bottom: 1px solid var(--border-ui);
+}
+
+.text-container {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.text-container h2 {
+    font-size: 2.25rem;
+    margin-bottom: 30px;
+}
+
+.text-container h3 {
+    font-size: 1.25rem;
+    color: var(--text-main);
+    margin-top: 40px;
+}
+
+.text-container p {
+    margin-bottom: 16px;
+    color: var(--text-muted);
+}
+
+.step-by-step-section {
+    padding: 80px 5%;
+    background-color: var(--bg-main);
+}
+
+.timeline-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.timeline-step {
+    display: flex;
+    margin-bottom: 32px;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px; /* Square technical badge */
+    background-color: var(--primary-graphite);
+    color: var(--bg-panel);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-right: 24px;
+}
+
+.step-content h3 {
+    font-size: 1.2rem;
+    margin-top: 4px;
+}
+
+.step-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   FAQ ACCORDION
+   ========================================================================== */
+.faq-accordion {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-ui);
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+
+summary {
+    padding: 20px 24px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--text-main);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+summary::after {
+    content: '+';
+    font-size: 1.2rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+}
+
+details[open] summary::after { content: '-'; }
+
+.faq-content {
+    padding: 0 24px 20px 24px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer {
+    background-color: #000000;
+    color: #a3a3a3;
+    text-align: center;
+    padding: 60px 5% 40px;
+}
+
+.footer-brand {
+    font-weight: 800;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.footer-links {
+    margin: 24px 0;
+}
+
+.footer-links a {
+    color: #a3a3a3;
+    margin: 0 16px;
+    font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    margin-top: 32px;
+    border-top: 1px solid #262626;
+    padding-top: 24px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        padding: 16px 5%;
+    }
+    nav { margin-top: 16px; }
+    nav a { margin: 0 12px; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-buttons { flex-direction: column; }
+    .btn-primary, .btn-secondary { width: 100%; }
+}
