@@ -9,15 +9,16 @@
 </head>
 <body>
 
-    <header class="site-header">
+        <header class="site-header">
         <div class="logo">The Universal Measurer</div>
         <nav>
             <a href="ringsizer/index.html">Ring Sizer</a>
-            <a href="bangle-sizer.html">Bangles</a>
-            <a href="watch-lugs.html">Watch Lugs</a>
-            <a href="hardware.html">Hardware</a>
+            <a href="#" class="coming-soon" >Bangles</a>
+            <a href="#" class="coming-soon" >Watch Lugs</a>
+            <a href="#" class="coming-soon" >Hardware</a>
         </nav>
     </header>
+
 
     <main>
         <section class="hero-section">
@@ -38,7 +39,7 @@
                 <p>Choose from our dedicated sizing calculators below. Each tool is custom-built for specific physical geometries, ensuring you get the exact measurement you need.</p>
             </div>
             
-            <div class="grid-container">
+                        <div class="grid-container">
                 <a href="ringsizer/index.html" class="tool-card">
                     <div class="card-icon">💍</div>
                     <h3>The Ring Sizer</h3>
@@ -46,27 +47,28 @@
                     <span class="card-cta">Measure Ring &rarr;</span>
                 </a>
 
-                <a href="bangle-sizer.html" class="tool-card">
+                <a href="#" class="tool-card coming-soon" >
                     <div class="card-icon">⭕</div>
                     <h3>Bangle & Bracelet Sizer</h3>
                     <p>Calculate rigid bangle sizes for the widest part of your hand, or determine the perfect flexible bracelet length for a comfortable fit.</p>
-                    <span class="card-cta">Measure Bangle &rarr;</span>
+                    <span class="card-cta">Coming Soon</span>
                 </a>
 
-                <a href="watch-lugs.html" class="tool-card">
+                <a href="#" class="tool-card coming-soon" >
                     <div class="card-icon">⌚</div>
                     <h3>Watch Lug Measurer</h3>
                     <p>Buying a replacement strap? Instantly find out if your analog or smartwatch requires an 18mm, 20mm, or 22mm band without needing a physical ruler.</p>
-                    <span class="card-cta">Measure Lugs &rarr;</span>
+                    <span class="card-cta">Coming Soon</span>
                 </a>
 
-                <a href="hardware.html" class="tool-card">
+                <a href="#" class="tool-card coming-soon" >
                     <div class="card-icon">🔩</div>
                     <h3>Hardware & Screws</h3>
                     <p>Identify lost parts instantly. Measure M2, M3, and M4 screw threads, tiny bolts, and small electronic standoffs with engineering-grade digital calipers.</p>
-                    <span class="card-cta">Measure Hardware &rarr;</span>
+                    <span class="card-cta">Coming Soon</span>
                 </a>
             </div>
+
         </section>
 
         <section id="how-it-works" class="tech-explanation-section">
@@ -168,6 +170,45 @@
             <p class="copyright">&copy; 2026 All rights reserved.</p>
         </div>
     </footer>
+
+        <div id="custom-alert" class="modal-overlay hidden">
+        <div class="modal-panel">
+            <div class="modal-icon">⚙️</div>
+            <h3 class="modal-title">In Development</h3>
+            <p class="modal-message">This tool is currently being engineered for millimeter precision. It will be available in our next major update.</p>
+            <button id="close-alert" class="btn-graphite">Understood</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('custom-alert');
+            const closeBtn = document.getElementById('close-alert');
+            const comingSoonLinks = document.querySelectorAll('.coming-soon');
+
+            // Attach the custom modal to all coming-soon links
+            comingSoonLinks.forEach(link => {
+                link.removeAttribute('onclick'); // Failsafe to remove old alerts
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Stop the # link from jumping to the top of the page
+                    modal.classList.remove('hidden');
+                });
+            });
+
+            // Close button logic
+            closeBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+
+            // Close if user clicks the dark background outside the box
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
 
 </body>
 </html>
