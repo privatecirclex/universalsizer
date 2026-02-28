@@ -154,6 +154,21 @@ body { font-family: var(--font-ui); background-color: var(--bg-main); color: var
 .target-circle { border: 2px solid var(--primary-graphite); border-radius: 50%; margin: 20px 0; transition: width 0.1s, height 0.1s; }
 .target-line { height: 4px; background-color: var(--primary-graphite); margin: 40px 0; transition: width 0.1s; border-radius: 2px; }
 
+.pro-tip {
+    background-color: var(--bg-main);
+    border-left: 3px solid var(--primary-graphite);
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border-radius: 0 4px 4px 0;
+    text-align: left;
+    width: 100%;
+    line-height: 1.5;
+}
+.pro-tip strong {
+    color: var(--primary-graphite);
+}
 /* BUTTONS & TOGGLES */
 .btn-graphite { width: 100%; padding: 14px; background: var(--primary-graphite); color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 10px; }
 .mode-toggles { display: flex; gap: 10px; margin-bottom: 25px; }
@@ -271,6 +286,65 @@ input[type="range"] {
     color: var(--text-muted);
     font-weight: 400;
 }
+/* ==========================================================================
+   DIMENSION BRACKET (TYPICAL RANGE)
+   ========================================================================== */
+.range-bracket {
+    position: absolute;
+    top: 28px; /* Positions it right under the slider track */
+    height: 12px;
+    pointer-events: none; /* Ensures the user can still click the slider through it */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bracket-line {
+    width: 100%;
+    height: 6px;
+    border-left: 1px solid var(--text-muted);
+    border-right: 1px solid var(--text-muted);
+    border-bottom: 1px solid var(--text-muted);
+    opacity: 0.6;
+}
+
+.bracket-text {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    margin-top: 5px;
+    white-space: nowrap;
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   TOAST NOTIFICATION
+   ========================================================================== */
+.toast-notification {
+    position: fixed;
+    bottom: -100px; /* Hidden off-screen by default */
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-graphite);
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: bottom 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+    text-align: center;
+    width: max-content;
+    max-width: 90vw;
+    pointer-events: none; /* Prevents it from blocking taps */
+}
+
+.toast-notification.show {
+    bottom: 30px; /* Slides up into view */
+}
+
 
 /* On very small phones, we shrink it a bit more to save space */
 @media (max-width: 480px) {

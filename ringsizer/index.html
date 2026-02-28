@@ -72,10 +72,11 @@
 </p>
 
             <div id="step-calibration" class="tool-panel">
-                <h2 class="panel-title">1. Calibrate Screen</h2>
+                <h2 class="panel-title"> Calibrate Screen</h2>
 
                     <p class="panel-instruction">To ensure absolute millimeter precision, place a standard credit card or ID <strong>vertically (portrait)</strong> on your screen. Adjust the slider until the digital box matches the physical width of your card.</p>
-                    
+ <p class="panel-instruction" style="font-size: 0.9rem; margin-top: -15px;"><strong>Proportional Lock:</strong> Just focus on matching the width perfectly. The height is mathematically locked and will align automatically.</p>
+   
                     <div class="calibration-zone">
                                                 <div id="card-box" class="target-box vertical-card">
                             <div class="card-chip"></div>
@@ -85,8 +86,8 @@
                     </div>
                     
                     <div class="precision-slider-container">
-                        <input type="range" id="calibrate-slider" class="precision-slider" min="100" max="600" value="200" aria-label="Calibrate screen scale">
-                    </div>
+                        <input type="range" id="calibrate-slider" class="precision-slider" min="100" max="600" step="0.1" value="200" aria-label="Calibrate screen scale">
+                </div>
                     
                     <button id="btn-to-verification" class="btn-graphite">Next: Verify Accuracy</button>
                 </div>
@@ -106,7 +107,7 @@
 
 
                 <div id="step-measurement" class="tool-panel hidden">
-                    <h2 class="panel-title">2. Digital Caliper</h2>
+                    <h2 class="panel-title"> Digital Caliper</h2>
                     
                     <div class="mode-toggles">
                         <button class="toggle-btn active" data-mode="ring">Measure a Ring</button>
@@ -115,17 +116,25 @@
 
                     <div id="mode-ring" class="measure-zone">
                         <p class="panel-instruction">Place your existing ring flat on the screen. Expand the circle until it perfectly aligns with the <strong>inner edge</strong> of your ring.</p>
+                      <div class="pro-tip">
+        <strong>Precision Tip:</strong> Close one eye and look <em>straight down</em> from directly above the ring. Looking at an angle through the phone's glass will distort the alignment.
+    </div>
                         <div id="ring-circle" class="target-circle"></div>
-                        <div class="precision-slider-container">
-                            <input type="range" id="ring-slider" class="precision-slider" min="30" max="250" value="100" aria-label="Adjust ring diameter">
-                        </div>
-                    </div>
+                         <div class="precision-slider-container" style="position: relative; padding-bottom: 35px;">
+        <input type="range" id="ring-slider" class="precision-slider" min="30" max="250" step="0.1" value="100" aria-label="Adjust ring diameter">
+        
+        <div id="human-range-bracket" class="range-bracket hidden">
+            <div class="bracket-line"></div>
+            <span class="bracket-text">TYPICAL ADULT RANGE</span>
+        </div>
+    </div>
+</div>
 
                     <div id="mode-paper" class="measure-zone hidden">
                         <p class="panel-instruction">Wrap a strip of paper tightly around your finger, mark the overlap, and hold it to the screen. Match the digital line to your marks.</p>
                         <div id="paper-line" class="target-line"></div>
                         <div class="precision-slider-container">
-                            <input type="range" id="paper-slider" class="precision-slider" min="100" max="400" value="150" aria-label="Adjust paper length">
+                            <input type="range" id="paper-slider" class="precision-slider" min="100" max="400" step="0.1" value="150" aria-label="Adjust paper length">
                         </div>
                     </div>
 
@@ -263,6 +272,11 @@
             <p class="copyright">&copy; 2026 All rights reserved.</p>
         </div>
     </footer>
+    <div id="landscape-toast" class="toast-notification">
+        ⚠️ Screen too narrow? Rotate phone to Landscape mode.
+    </div>
+
+    <script src="script.js"></script>
 
     <script src="script.js"></script>
   <script>

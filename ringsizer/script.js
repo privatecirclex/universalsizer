@@ -47,8 +47,19 @@ const cardBox = document.getElementById('card-box');
 
 // Adjust visual box width
 calibrateSlider.addEventListener('input', (e) => {
-    cardBox.style.width = e.target.value + 'px';
+    const val = e.target.value;
+    cardBox.style.width = val + 'px';
+    
+    // 90% Threshold Toast Logic (90% of 600 = 540)
+    const landscapeToast = document.getElementById('landscape-toast');
+    if (val > 540) {
+        landscapeToast.classList.add('show');
+    } else {
+        landscapeToast.classList.remove('show');
+        
+    }
 });
+
 
 // Proceed to Verification Step (DO NOT SAVE YET)
 document.getElementById('btn-to-verification').addEventListener('click', () => {
@@ -62,6 +73,8 @@ document.getElementById('btn-to-verification').addEventListener('click', () => {
     // Hide Calibration, Show Verification
     document.getElementById('step-calibration').classList.add('hidden');
     document.getElementById('step-verification').classList.remove('hidden');
+    document.getElementById('landscape-toast').classList.remove('show');
+
 });
 
 // Verification Passed: Save and unlock tools
@@ -96,7 +109,11 @@ function showMeasurementTool() {
     
     // Trigger initial calculation
     document.getElementById('ring-slider').dispatchEvent(new Event('input'));
+    
+    // Trigger the dimension bracket math
+    updateHumanRangeBracket();
 }
+
 
 const toggleBtns = document.querySelectorAll('.toggle-btn');
 toggleBtns.forEach(btn => {
@@ -188,5 +205,40 @@ document.getElementById('share-btn').addEventListener('click', () => {
         alert('Size data copied to clipboard!');
     }
 });
+// --- 7. DYNAMIC RANGE BRACKET ---
+function updateHumanRangeBracket() {
+    if (ppm <= 0) return;
+    
+    // The physical human range in millimeters
+    const minMM = 14.1;
+    const maxMM = 22.2;
+    
+    // The slider's exact HTML attributes
+    const sliderMin = 30;
+    const sliderMax = 250;
+    
+    // Convert physical millimeters to pixels on THIS specific screen
+    let startPx = minMM * ppm;
+    let endPx = maxMM * ppm;
+    
+    // Calculate the percentage positions for CSS styling
+    const startPct = ((startPx - sliderMin) / (sliderMax - sliderMin)) * 100;
+    const endPct = ((endPx - sliderMin) / (sliderMax - sliderMin)) * 100;
+    const widthPct = endPct - startPct;
+    
+    // Apply to the UI
+    const bracket = document.getElementById('human-range-bracket');
+    
+    // Minor safeguard: Only show if the math fits within the slider
+    if (startPct >= 0 && endPct <= 100) {
+        bracket.style.left = startPct + '%';
+        bracket.style.width = widthPct + '%';
+        bracket.classList.remove('hidden');
+        document.getElementById('ring-slider').style.background = `linear-gradient(to right, var(--border-ui) ${startPct}%, rgba(38, 38, 38, 0.35) ${startPct}%, rgba(38, 38, 38, 0.35) ${endPct}%, var(--border-ui) ${endPct}%)`;
+
+    } else {
+        bracket.classList.add('hidden');
+    }
+}
 
 
